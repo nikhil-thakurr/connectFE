@@ -3,12 +3,13 @@ import './App.css'
 import Body from './components/Body'
 import Login from './components/Login'
 import Profile from './components/Profile'
+import { Provider } from 'react-redux'
 
 function App() {
 
   return (
     <>
-
+  <Provider>
     <BrowserRouter basename='/'>
 
       <Routes>
@@ -22,6 +23,7 @@ function App() {
       </Routes>
     
     </BrowserRouter>
+    </Provider>
     </>
   )
 }

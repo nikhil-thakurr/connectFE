@@ -1,3 +1,4 @@
  ~ CORS Error : Happens when you are making a request from x domain to y domain
                 Browser Throws this error , it is bothered about the cors error
-                
+                We have to add cors in backend to allow requests from frontend or specific URLs based on some conditions
+                we have to do with credentials true in both front end and backend to let our cookies be passed 
