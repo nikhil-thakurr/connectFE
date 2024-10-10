@@ -39,7 +39,7 @@ const Body = () => {
     <>
       <NavBar />
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

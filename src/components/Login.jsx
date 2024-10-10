@@ -48,10 +48,10 @@ const Login = () => {
     <span className="label-text my-2 ">Password </span>
   </div>
   <input type="text" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="********" className="input input-bordered w-full max-w-xs" />
-  
+  <p className='text-red-500'>{error}</p>
 </label>
       <div className="card-actions  flex justify-center">
-        <p className='text-red-500'>{error}</p>
+        
         <button className="btn btn-primary mt-5" onClick={handleLogin}>Login</button>
       </div>
     </div>
