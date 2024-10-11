@@ -22,37 +22,34 @@ const Connections = () => {
     connectionData();
   }, []);
 
-  if(!selector)return ;
+  if (!selector) return;
 
-  if(selector.length ===0 )return <h1>No connections found !!</h1>
+  if (selector.length === 0) return <h1>No connections found !!</h1>;
 
   return (
-    <>
+    <div className="text-center">
       <div className="font-extrabold text-2xl text-center">
         <h1>Connections </h1>
       </div>
 
-      {selector && (
-        <div className="">
-          {selector.map((u) => (
-            <div className="card bg-base-200 w-96  shadow-xl my-8 ">
-              <div>
-                <img src={u.photoUrl} className="w-12 h-12" />
-              </div>
-
-              <div className="mx-10">
-                <h1>
-                 Name : {u.firstName + "     " + u.lastName}
-                </h1>
-               About: <h2>{u.about}</h2>
-               {u.age && <h2> Age :{u.age}</h2>} 
-                <p>{u.skills}</p>
-              </div>
+      {selector &&
+        selector.map((u) => (
+          <div className="bg-black-400 rounded-lg w-2/3  shadow-xl my-8 p-8 flex justify-center ml-60">
+            <div>
+              <img src={u.photoUrl} className="w-16 h-16" />
             </div>
-          ))}
-        </div>
-      )}
-    </>
+
+            <div className="mx-10">
+              <h1>Name : {u.firstName + "     " + u.lastName}</h1>
+              <h2> About: {u.about}</h2>
+              {u.age && <h2> Age :{u.age}</h2>}
+              {u.skills && <h2> Skills :{u.skills}</h2>}
+              {u.gender && <h2> Gender :{u.gender}</h2>}
+              <p>{u.skills}</p>
+            </div>
+          </div>
+        ))}
+    </div>
   );
 };
 
