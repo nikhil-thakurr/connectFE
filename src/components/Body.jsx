@@ -23,14 +23,14 @@ const Body = () => {
       dispatch(addUser(res.data));
     } catch (err) {
       if (err.status === 402) {
-        navigate("/login");
+      return  navigate("/login");
       }
       console.log("ERROR IS : " + err);
     }
   };
 
   useEffect(() => {
-    
+
       fetchUser();
     
   }, []);

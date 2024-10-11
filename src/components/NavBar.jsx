@@ -23,7 +23,7 @@ const NavBar = () => {
 
     <div className="navbar bg-base-100">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">  Connect</Link>
+        <Link to="/feed" className="btn btn-ghost text-xl">  Connect</Link>
       </div>
      {user&& <div className="flex-none gap-2 mx-5">
        <p>Welcome {user.firstName}</p>
@@ -44,7 +44,7 @@ const NavBar = () => {
                 <span className="badge">New</span>
               </Link>
             </li>
-            <li><a>Settings</a></li>
+            <li><Link to="/connections">connections</Link></li>
             <li><Link onClick={handleLogout}>Logout</Link></li>
           </ul>
         </div>
