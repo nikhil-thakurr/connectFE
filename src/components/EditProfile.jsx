@@ -15,6 +15,7 @@ const EditProfile = ({ user }) => {
   const [gender, setgender] = useState(user.gender);
   const [about, setabout] = useState(user.about);
   const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
+  const [id, setid] = useState(user._id);
   const [error, setError] = useState("");
   const [toast,settoast]=useState(false);
   const dispatch = useDispatch();
@@ -95,7 +96,7 @@ const EditProfile = ({ user }) => {
             </div>
           </div>
         </div>
-        <UserCard user={{ firstName, lastName, age, gender, about, photoUrl }} />
+        <UserCard user={{id, firstName, lastName, age, gender, about, photoUrl }} />
       </div>
       <div className="toast toast-top toast-center">
 

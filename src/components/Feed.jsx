@@ -16,8 +16,8 @@ const Feed = () => {
 
     try {
       const res = await axios.get(BASE_URL + "feed", { withCredentials: true });
-    //   console.log(res.data);
-      dispatch(addFeed(res?.data));
+      //console.log(res.data.users);
+      dispatch(addFeed(res?.data.users));
     } 
     catch (err) {
       navigate("/login")
@@ -29,10 +29,15 @@ const Feed = () => {
     feedData();
   }, []);
 
+
+
+  if(!feed)return;
+  if(feed.length<=0)return <h1 className='text-center font-bold'>No More person Nearby !  Come Back Later</h1>
+
   return (
     feed &&(
     <div className="flex justify-center my-12">
-      <UserCard user={feed.users[0]} />
+      <UserCard user={feed[0]} />
     </div>
     )
   );
