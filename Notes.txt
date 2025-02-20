@@ -2,3 +2,68 @@
                 Browser Throws this error , it is bothered about the cors error
                 We have to add cors in backend to allow requests from frontend or specific URLs based on some conditions
                 we have to do with credentials true in both front end and backend to let our cookies be passed 
+
+
+// EC2 
+    Create an instance by generating a pem file (thats like a secret key , should be kept safe)                
+
+    connect to instancef  with ssh ( terminal )
+    follow the stepe mentioned
+    Then do (ssh -i "Connect_App.pem" ubuntu@ec2-xxxxxxx-72-158.ap-south-1.compute.amazonaws.com) to connect to your machine (this will be present in AWS)
+    Then Install everything needed ot run the project on AWS e.g node (version should be same)
+    the Do git clone the repo from github 
+    LS on aws instance to see the cloned cloned 
+    Create the build for the project to deploy it on the AWS
+    Do npm i also here
+    Now we have to run the dist on the server which contains all the code that we need
+    Install Nginx
+    Use it to host our front end project 
+    Do sudo apt update (to update system dependences)
+    Then do sudo apt install nginx
+    Then Do sudo systemctl start nginx ( to start the nginx)
+    sudo systemctl enable nginx
+    Copy all the code from dist to the nginx server now located at /var/www/html/
+    sudo scp -r dist/* /var/www/html/ 
+    Do port mapping , enable port 80 on which your  nginx is running
+    Go to security groups and inbound rules and set the port    
+    Then go to IP and hit it to see the front end code running
+
+   // EC2 Deployment backend
+     Do Npm start over machine
+     Allow network access to your ip in mongo DB (Allow IP Address) 
+     Here Also we need to do port mapping like we did in front end
+     Now it will say cannot get /
+     We cannot keep our system open and do npm run forever , we need something to do that for us 
+     This can be done by pm2 package   npm i pm2 -g
+     then start our script via pm2 like pm2 start npm -- start
+     pm2 logs to see the logs if face any issue
+     pm2 flush npm to clear the process running
+     pm2 list to see all the processes started
+     pm2 stop npm to stop the process
+     pm2 delete npm to delete the process
+
+     Our front end is running on localhost and now we have to match the BE and fE 
+
+     Front End : http://13.127.72.158/
+     Back End : http://13.127.72.158:3000
+
+     Domain Mapping : http://connect.com/
+                      http://connect.com:3000 But we want the pattern to be http://connect.com/api
+
+                      For this we need to map :3000 to /api
+                      We need nginx proxy pass to do that
+
+                      sudo nano /etc/nginx/sites-available/default
+                      
+                                server_name 13.127.72.158;
+                                location /api/ {
+                                    proxy_pass http://localhost:3000/;
+                                    proxy_http_version 1.1;
+                                    proxy_set_header Upgrade $http_upgrade;
+                                    proxy_set_header Connection 'upgrade';
+                                    proxy_set_header Host $host;
+                                    proxy_cache_bypass $http_upgrade;
+                                }
+
+                        Restart Nginx sudo systemctl restart nginx        
+                            
