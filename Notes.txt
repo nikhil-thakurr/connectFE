@@ -9,7 +9,7 @@
 
     connect to instancef  with ssh ( terminal )
     follow the stepe mentioned
-    Then do (ssh -i "Connect_App.pem" ubuntu@ec2-xxxxxxx-72-158.ap-south-1.compute.amazonaws.com) to connect to your machine (this will be present in AWS)
+    Then do (ssh -i "Connect_App.pem" ubuntu@ec8p-south-1.compute.amazonaws.com) to connect to your machine (this will be present in AWS)
     Then Install everything needed ot run the project on AWS e.g node (version should be same)
     the Do git clone the repo from github 
     LS on aws instance to see the cloned cloned 
